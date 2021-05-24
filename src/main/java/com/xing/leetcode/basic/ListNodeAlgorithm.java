@@ -2,13 +2,15 @@ package com.xing.leetcode.basic;
 
 import com.xing.leetcode.basic.node.ListNode;
 
+import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.Set;
 import java.util.Stack;
 
 /**
  * @author Mystery
  */
-public class NodeAlgorithm {
+public class ListNodeAlgorithm {
     public static void main(String[] args) {
         ListNode listNode = new ListNode(4);
         listNode.next = new ListNode(5);
@@ -157,7 +159,7 @@ public class NodeAlgorithm {
             last = last.next;
         }
         //反转后半部分链表
-        last = reverseList(last);
+        last = reverse(last);
         first = head;
         while (last != null) {
             if (last.index != first.index) {
@@ -167,5 +169,35 @@ public class NodeAlgorithm {
             last = last.next;
         }
         return true;
+    }
+
+    private static ListNode reverse(ListNode head) {
+        ListNode prev = null;
+        while (head != null) {
+            ListNode next = head.next;
+            head.next = prev;
+            prev = head;
+            head = next;
+        }
+        return prev;
+    }
+
+    /**
+     * 给定一个链表，判断链表中是否有环。
+     * 如果链表中有某个节点，可以通过连续跟踪 next 指针再次到达，则链表中存在环。
+     * 快慢指针、Set
+     * @param head
+     * @return
+     */
+    private static boolean hasCycle(ListNode head) {
+        Set<ListNode> set = new HashSet<>();
+        while (head != null) {
+            if (!set.add(head)) {
+                return true;
+            } else {
+                head = head.next;
+            }
+        }
+        return false;
     }
 }
