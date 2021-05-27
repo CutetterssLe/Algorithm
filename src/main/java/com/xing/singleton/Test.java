@@ -5,9 +5,10 @@ package com.xing.singleton;
  */
 public class Test {
     public static void main(String[] args) throws Exception{
-        Class<?> clazz = Class.forName("com.xing.singleton.SingletonObj");
-        Object o = clazz.newInstance();
-        System.out.println(o);
+//        Class<?> clazz = Class.forName("com.xing.singleton.SingletonObj");
+//        Object o = clazz.newInstance();
+//        System.out.println(o);
+        while (true);
     }
 
 }
