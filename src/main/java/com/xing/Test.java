@@ -35,6 +35,5 @@ public class Test {
 //        task2.join();
 //        System.out.println(x);
 //        System.out.println(String.format(s,"sdfsdfdf"));
-        System.out.println(1 << 2);
     }
 }
