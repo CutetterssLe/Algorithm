@@ -162,6 +162,7 @@ public class ListNodeAlgorithm {
         last = reverse(last);
         first = head;
         while (last != null) {
+
             if (last.index != first.index) {
                 return false;
             }
