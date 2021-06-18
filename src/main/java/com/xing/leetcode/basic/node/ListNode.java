@@ -11,6 +11,14 @@ public class ListNode {
 
     public ListNode next;
 
+    public int min;
+
+    public ListNode(int index, ListNode next, int min) {
+        this.index = index;
+        this.next = next;
+        this.min = min;
+    }
+
     public ListNode(int index) {
         this.index = index;
     }
