@@ -10,7 +10,7 @@ public class DesignAlgorithm {
         int[] arr = {1, 5, 8, 2, 7, 6, 3};
 //        System.out.println(Arrays.toString(shuffle(arr)));
 //        System.out.println(countPrimes(5));
-        System.out.println();
+        System.out.println(isPowerOfThree(2));
     }
 
     /**
