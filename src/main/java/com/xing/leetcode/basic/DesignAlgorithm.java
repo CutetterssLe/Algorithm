@@ -11,7 +11,8 @@ public class DesignAlgorithm {
 //        System.out.println(Arrays.toString(shuffle(arr)));
 //        System.out.println(countPrimes(5));
 //        System.out.println(isPowerOfThree(2));
-        System.out.println(romeNumConvertInt("MCMXCIV"));
+//        System.out.println(romeNumConvertInt("MCMXCIV"));
+        System.out.println(hammingWeight(00100111000));
     }
 
     /**
@@ -148,5 +149,28 @@ public class DesignAlgorithm {
             default:
                 return 0;
         }
+    }
+
+    /**
+     * 编写一个函数，输入是一个无符号整数（以二进制串的形式），返回其二进制表达式中数字位数为 '1' 的个数（也被称为汉明重量）。
+     * 输入：00000000000000000000000000001011
+     * 输出：3
+     * 解释：输入的二进制串 00000000000000000000000000001011中，共有三位为 '1'。
+     *
+     * 作者：力扣 (LeetCode)
+     * 链接：https://leetcode-cn.com/leetbook/read/top-interview-questions-easy/xn1m0i/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     * @param n
+     * @return
+     */
+    private static int hammingWeight(int n) {
+        int count = 0;
+        //右移，当数字为0时就表示没有'1'了，不需要再比较了
+        while (n != 0) {
+            count += n & 1;
+            n = n >>> 1;
+        }
+        return count;
     }
 }
