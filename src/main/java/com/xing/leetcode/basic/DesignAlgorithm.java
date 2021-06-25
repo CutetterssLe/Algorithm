@@ -12,7 +12,7 @@ public class DesignAlgorithm {
 //        System.out.println(countPrimes(5));
 //        System.out.println(isPowerOfThree(2));
 //        System.out.println(romeNumConvertInt("MCMXCIV"));
-        System.out.println(hammingWeight(00100111000));
+        System.out.println(hammingDistance(1,4));
     }
 
     /**
@@ -172,5 +172,40 @@ public class DesignAlgorithm {
             n = n >>> 1;
         }
         return count;
+    }
+
+    /**
+     * 两个整数之间的 汉明距离 指的是这两个数字对应二进制位不同的位置的数目。
+     *
+     * 给你两个整数 x 和 y，计算并返回它们之间的汉明距离。
+     * 输入：x = 1, y = 4
+     * 输出：2
+     * 解释：
+     * 1   (0 0 0 1)
+     * 4   (0 1 0 0)
+     *        ↑   ↑
+     * 上面的箭头指出了对应二进制位不同的位置。
+     *
+     * x和y都转化为二进制的时候，在相同的位置上如果值都一样，他们的汉明距离就是0。如果在相同的位置上值不一样，
+     * 有多少个不一样的位置，那么汉明距离就是多少。所以看到这道题，我们应该最容易想到的就是先异或运算，然后再计算这个异或运算的结果在二进制表示中1的个数。
+     *
+     *
+     * 作者：力扣 (LeetCode)
+     * 链接：https://leetcode-cn.com/leetbook/read/top-interview-questions-easy/xnyode/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     * @param x
+     * @param y
+     * @return
+     */
+    private static int hammingDistance(int x, int y) {
+        int i = x ^ y;
+//        Integer.bitCount(i);
+        i = i - ((i >>> 1) & 0x55555555);
+        i = (i & 0x33333333) + ((i >>> 2) & 0x33333333);
+        i = (i + (i >>> 4)) & 0x0f0f0f0f;
+        i = i + (i >>> 8);
+        i = i + (i >>> 16);
+        return i & 0x3f;
     }
 }
