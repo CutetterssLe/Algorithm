@@ -12,7 +12,8 @@ public class DesignAlgorithm {
 //        System.out.println(countPrimes(5));
 //        System.out.println(isPowerOfThree(2));
 //        System.out.println(romeNumConvertInt("MCMXCIV"));
-        System.out.println(hammingDistance(1,4));
+//        System.out.println(hammingDistance(1,4));
+        System.out.println(reverseBits(01));
     }
 
     /**
@@ -207,5 +208,31 @@ public class DesignAlgorithm {
         i = i + (i >>> 8);
         i = i + (i >>> 16);
         return i & 0x3f;
+    }
+
+    /**
+     * 颠倒给定的 32 位无符号整数的二进制位。
+     * https://leetcode-cn.com/leetbook/read/top-interview-questions-easy/xnc5vg/
+     * @param n
+     * @return
+     */
+    private static int reverseBits(int n) {
+//        int res = 0;
+//        for (int i = 0; i < 32; i++) {
+//            res <<= 1;
+//            res |= n & 1;
+//            n >>= 1;
+//        }
+        int res = 0;
+        //把低16位移到高16上
+        for (int i = 0; i < 16; i++) {
+            res |= (n & (1 << i)) << (31 - i * 2);
+        }
+        //把高16位移到低16位上
+        for (int i = 16; i < 32; i++) {
+            res |= (n & (1 << i)) >>> (i * 2 - 31);
+        }
+
+        return res;
     }
 }
