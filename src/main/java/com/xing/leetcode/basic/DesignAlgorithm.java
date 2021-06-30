@@ -1,5 +1,7 @@
 package com.xing.leetcode.basic;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -14,7 +16,8 @@ public class DesignAlgorithm {
 //        System.out.println(romeNumConvertInt("MCMXCIV"));
 //        System.out.println(hammingDistance(1,4));
 //        System.out.println(reverseBits(01));
-        System.out.println(isValid("(({{}}))"));
+//        System.out.println(isValid("(({{}}))"));
+        System.out.println(generate(5));
     }
 
     /**
@@ -259,5 +262,29 @@ public class DesignAlgorithm {
             s = s.replaceAll("\\{}", "");
         }
         return s.equals("");
+    }
+
+    /**
+     * 杨辉三角
+     * 在杨辉三角中，每个数是它左上方和右上方的数的和。
+     * @param nums
+     * @return
+     */
+    private static List<List<Integer>> generate(int nums) {
+        //结果
+        List<List<Integer>> res = new ArrayList<>();
+        //每一行的元素
+        List<Integer> row = new ArrayList<>();
+
+        for (int i = 0; i < nums; i++) {
+            //每行第一个肯定是1
+            row.add(0, 1);
+            for (int j = 1; j < row.size() - 1; j++) {
+                //后面的数字为左上方和右上方的数的和
+                row.set(j, row.get(j) + row.get(j + 1));
+            }
+            res.add(new ArrayList<>(row));
+        }
+        return res;
     }
 }
