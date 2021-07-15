@@ -9,7 +9,7 @@ import java.util.concurrent.Semaphore;
 public class SemaphoreTest {
     @SuppressWarnings("all")
     public static void main(String[] args) {
-        Semaphore semaphore = new Semaphore(10,false);
+        Semaphore semaphore = new Semaphore(10,true);
 
         for (int i = 0; i < 100; i++) {
             new Thread(() ->

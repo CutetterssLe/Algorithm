@@ -1,5 +1,7 @@
 package com.xing;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -7,11 +9,38 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class Test {
 
-    public static void main(String[] args) {
-        cc();
+
+
+    private Integer id;
+    private String age;
+
+    public Integer getId() {
+        return id;
     }
 
-    private static synchronized int cc() {
-        return 0;
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+    public static Test buildTest(First f) {
+        Test test = new Test();
+        test.setAge("3");
+        test.setId(1);
+        return test;
+    }
+
+    @Override
+    public String toString() {
+        return "Test{" +
+                "id=" + id +
+                ", age='" + age + '\'' +
+                '}';
     }
 }

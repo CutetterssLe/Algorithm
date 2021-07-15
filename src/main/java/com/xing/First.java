@@ -1,6 +1,10 @@
 package com.xing;
 
+import java.time.Clock;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.*;
+import java.util.concurrent.ArrayBlockingQueue;
 
 /**
  * @author Mystery
@@ -18,14 +22,25 @@ public class First {
 //                map.remove(entry.getKey());
 //            }
 //        }
-        Iterator<Map.Entry<String, Object>> iterator = map.entrySet().iterator();
-        if (iterator.hasNext()) {
-            Map.Entry<String, Object> next = iterator.next();
-            if (next.getKey().equals("1")) {
-                iterator.remove();
-            }
-        }
-        System.out.println(map);
+//        Iterator<Map.Entry<String, Object>> iterator = map.entrySet().iterator();
+//        if (iterator.hasNext()) {
+//            Map.Entry<String, Object> next = iterator.next();
+//            if (next.getKey().equals("1")) {
+//                iterator.remove();
+//            }
+//        }
+//        System.out.println(map);
+//        Test test = Test.buildTest(new First());
+//        System.out.println(test);
+        System.out.println(LocalDateTime.now(Clock.system(ZoneId.of("Asia/Shanghai")))
+                .minusHours(1));
+
+        ArrayBlockingQueue arrayBlockingQueue = new ArrayBlockingQueue<String>(3);
+        arrayBlockingQueue.offer("1");
+        arrayBlockingQueue.offer("2");
+        arrayBlockingQueue.offer("3");
+        arrayBlockingQueue.offer("4");
+        System.out.println(arrayBlockingQueue);
     }
 
     private static int[] sort(int[] arr) {
