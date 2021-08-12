@@ -1,8 +1,10 @@
 package com.xing;
 
-import java.time.Clock;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
+import com.xing.lock.CountDownLatchTest;
+import com.xing.lock.LockSupportTest;
+
+import java.time.*;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.concurrent.ArrayBlockingQueue;
 
@@ -32,15 +34,33 @@ public class First {
 //        System.out.println(map);
 //        Test test = Test.buildTest(new First());
 //        System.out.println(test);
-        System.out.println(LocalDateTime.now(Clock.system(ZoneId.of("Asia/Shanghai")))
-                .minusHours(1));
+//        System.out.println(LocalDateTime.now(Clock.system(ZoneId.of("Asia/Shanghai")))
+//                .minusHours(1));
+//
+//        ArrayBlockingQueue arrayBlockingQueue = new ArrayBlockingQueue<String>(3);
+//        arrayBlockingQueue.offer("1");
+//        arrayBlockingQueue.offer("2");
+//        arrayBlockingQueue.offer("3");
+//        arrayBlockingQueue.offer("4");
+//        System.out.println(arrayBlockingQueue);
+//        CountDownLatchTest c = new CountDownLatchTest();
+//        LockSupportTest t = new LockSupportTest();
+//        ObjectSize<CountDownLatchTest, LockSupportTest> size = new ObjectSize<>(c, t);
+//        CountDownLatchTest e = size.getE();
+//        LockSupportTest t1 = size.getT();
+//        System.out.println(e == c);
+//        System.out.println(t == t1);
+        LocalDate now = LocalDate.now();
+        System.out.println(LocalDateTime.of(now, LocalTime.MAX));
+//        System.out.println(now.getMonth());
+//        System.out.println(now.getYear());
+//        System.out.println(now.getMonthValue());
+//        System.out.println(now.getDayOfMonth());
+//        System.out.println(LocalDate.of(now.getYear(), now.getMonth(), 1));
+    }
 
-        ArrayBlockingQueue arrayBlockingQueue = new ArrayBlockingQueue<String>(3);
-        arrayBlockingQueue.offer("1");
-        arrayBlockingQueue.offer("2");
-        arrayBlockingQueue.offer("3");
-        arrayBlockingQueue.offer("4");
-        System.out.println(arrayBlockingQueue);
+    private static int s(int i) {
+        return i + 1;
     }
 
     private static int[] sort(int[] arr) {

@@ -8,11 +8,14 @@ import java.util.function.Consumer;
  * 交替打印ABC
  */
 public class LockSupportTest {
+    static final Mutex mutex = new Mutex();
     public static void main(String[] args) {
-        LockSupportTest lock = new LockSupportTest();
+
+//        LockSupportTest lock = new LockSupportTest();
         Consumer<String> consumer = str -> {
             while (true) {
-                LockSupport.park(lock);
+//                LockSupport.park(lock);
+                mutex.lock();
                 if (Thread.currentThread().isInterrupted()) {
                     throw new RuntimeException("`12");
                 }
@@ -31,17 +34,11 @@ public class LockSupportTest {
         Thread td =new Thread(() -> {
             int i = 0;
             while (true) {
-                if (i % 3 == 0) {
-                    LockSupport.unpark(t1);
-                } else if (i % 3 == 1) {
-                    LockSupport.unpark(t2);
-                } else  {
-                    LockSupport.unpark(t3);
-                }
+                mutex.unlock();
                 i++;
                 try {
 
-                    Thread.sleep(500L);
+                    Thread.sleep(1500L);
                 } catch (Exception e) {
                     e.getStackTrace();
                 }

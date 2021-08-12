@@ -1,8 +1,7 @@
 package com.xing.leetcode.basic;
 
+
 import java.util.*;
-import java.util.function.IntFunction;
-import java.util.stream.Stream;
 
 /**
  * @author Mystery
@@ -15,8 +14,10 @@ public class ArrayAlgorithm {
 //        System.out.println(maxProfit(nums));
 //        int[] nums = {15, 1, 1, 3, 2, 3, 2};
 //        System.out.println(singleNumber(nums));
-        int[] nums = {1, 2, 3, 4, 5};
-        System.out.println(twoSum(nums, 9));
+//        int[] nums = {1, 2, 3, 4, 5};
+//        System.out.println(twoSum(nums, 9));
+        System.out.println((1 << 31 ) - 1);
+        System.out.println(Objects.equals(null, null));
     }
 
     /**
