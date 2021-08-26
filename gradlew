@@ -183,3 +183,5 @@ APP_ARGS=`save "$@"`
 eval set -- $DEFAULT_JVM_OPTS $JAVA_OPTS $GRADLE_OPTS "\"-Dorg.gradle.appname=$APP_BASE_NAME\"" -classpath "\"$CLASSPATH\"" org.gradle.wrapper.GradleWrapperMain "$APP_ARGS"
 
 exec "$JAVACMD" "$@"
+task writeNewPom << { pom { project { inceptionYear '2008' licenses { license { name 'The Apache Software License, Version 2.0' url 'http://www.apache.org/licenses/LICENSE-2.0.txt' distribution 'repo' } } } }.writeTo("$buildDir/pom.xml")
+}

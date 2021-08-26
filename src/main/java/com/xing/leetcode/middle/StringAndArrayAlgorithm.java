@@ -4,6 +4,7 @@ package com.xing.leetcode.middle;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
+import java.math.BigDecimal;
 import java.nio.charset.Charset;
 import java.util.Base64;
 import java.util.List;
@@ -19,8 +20,8 @@ public class StringAndArrayAlgorithm {
         int i = 100_0_12_000;
         System.out.println(i);
 //        System.out.println(System.getenv());
-        Map<String, String> env = System.getenv();
-        System.out.println(env.get("LOGNAME"));
+//        Map<String, String> env = System.getenv();
+//        System.out.println(env.get("LOGNAME"));
 //        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 //        byte[] buffer = new byte[1024];
 //        int bytesRead;
@@ -30,6 +31,8 @@ public class StringAndArrayAlgorithm {
 //        int size = outputStream.size();
 //        System.out.println(size);
 //        String s = new String(Base64.getEncoder().encode(outputStream.toByteArray()), Charset.forName("US-ASCII"));
+        BigDecimal bigDecimal = new BigDecimal("123");
+        System.out.println(bigDecimal.add(new BigDecimal("-124")));
     }
 
     /**

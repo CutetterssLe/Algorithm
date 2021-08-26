@@ -9,15 +9,8 @@ import java.util.*;
 public class ArrayAlgorithm {
 
     public static void main(String[] args) {
-//        int[] nums = {15, 1, 1, 1, 2, 3, 10, 4, 5, 5, 5, 7};
-//        System.out.println(removeDuplicates(nums));
-//        System.out.println(maxProfit(nums));
-//        int[] nums = {15, 1, 1, 3, 2, 3, 2};
-//        System.out.println(singleNumber(nums));
-//        int[] nums = {1, 2, 3, 4, 5};
-//        System.out.println(twoSum(nums, 9));
-        System.out.println((1 << 31 ) - 1);
-        System.out.println(Objects.equals(null, null));
+        int[] nums = {2,9};
+        System.out.println(Arrays.toString(plusOne(nums)));
     }
 
     /**
@@ -227,16 +220,23 @@ public class ArrayAlgorithm {
      */
     private static int[] plusOne(int[] digits) {
         int length = digits.length;
-        for (int i = length - 1; i > 0; i--) {
+        for (int i = length - 1; i >= 0; i--) {
             //只要最后一个不是9，就直接给最后一个加1返回
             if (digits[i] != 9) {
                 digits[i]++;
                 return digits;
             } else {
-                return null;
+                //如果数组当前元素等于9，那么加1之后
+                //肯定会变为0，我们先让他变为0
+                digits[i] = 0;
             }
         }
-        return null;
+        //除非数组中的元素都是9，否则不会走到这一步，
+        //如果数组的元素都是9，我们只需要把数组的长度
+        //增加1，并且把数组的第一个元素置为1即可
+        int temp[] = new int[length + 1];
+        temp[0] = 1;
+        return temp;
     }
 
     /**
