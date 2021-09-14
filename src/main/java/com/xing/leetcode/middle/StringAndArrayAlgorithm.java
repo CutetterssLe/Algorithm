@@ -1,14 +1,6 @@
 package com.xing.leetcode.middle;
 
-
-
-import java.io.ByteArrayOutputStream;
-import java.io.FileInputStream;
-import java.math.BigDecimal;
-import java.nio.charset.Charset;
-import java.util.Base64;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 /**
@@ -16,28 +8,14 @@ import java.util.Map;
  */
 public class StringAndArrayAlgorithm {
     public static void main(String[] args) throws Exception {
-//        FileInputStream inputStream = new FileInputStream("/Users/xingmac/Downloads/05 电商项目微服务架构拆分.pdf");
-        int i = 100_0_12_000;
-        System.out.println(i);
-//        System.out.println(System.getenv());
-//        Map<String, String> env = System.getenv();
-//        System.out.println(env.get("LOGNAME"));
-//        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-//        byte[] buffer = new byte[1024];
-//        int bytesRead;
-//        while ((bytesRead = inputStream.read(buffer)) != -1) {
-//            outputStream.write(buffer, 0, bytesRead);
-//        }
-//        int size = outputStream.size();
-//        System.out.println(size);
-//        String s = new String(Base64.getEncoder().encode(outputStream.toByteArray()), Charset.forName("US-ASCII"));
-        BigDecimal bigDecimal = new BigDecimal("123");
-        System.out.println(bigDecimal.add(new BigDecimal("-124")));
+        int[] nums = {-1, -1, 0, -4, -4, 1, -2, 2, 0, -4};
+//        int[] nums = {0, 0, 0};
+        System.out.println(threeSum(nums));
     }
 
     /**
      * 三数之和
-     * 给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？请你找出所有和为 0 且不重复的三元组。
+     * 给你一个包含 n 个整数的数组nums，判断nums中是否存在三个元素 a，b，c ，使得a + b + c = 0 ？请你找出所有和为 0 且不重复的三元组。
      *
      * 注意：答案中不可以包含重复的三元组。
      *
@@ -49,6 +27,48 @@ public class StringAndArrayAlgorithm {
      * @return
      */
     private static List<List<Integer>> threeSum(int[] nums) {
-        return null;
+        if (nums.length < 3) {
+            return new ArrayList<>();
+        }
+        //排序之后方便比较
+        Arrays.sort(nums);
+        List<List<Integer>> result = new ArrayList<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] > 0) {
+                break;
+            }
+            //这里是因为前面的i已经比过了，在比一次没意义
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue;
+            }
+            //双指针
+            int f = i + 1;
+            int l = nums.length - 1;
+            //每次循环体内部再进行一次双指针比较
+            while (f < l) {
+                if (nums[i] + nums[f] + nums[l] > 0) {
+                    l--;
+                } else if (nums[i] + nums[f] + nums[l] < 0) {
+                    f++;
+                } else {
+                    List<Integer> list = new ArrayList<>();
+                    list.add(nums[i]);
+                    list.add(nums[f]);
+                    list.add(nums[l]);
+                    result.add(list);
+                    l--;
+                    f++;
+                    //这个f<l的条件不加会数组越界
+                    while (f < l && nums[f] == nums[f - 1]) {
+                        f++;
+                    }
+                    //这个f<l的条件不加会数组越界
+                    while (f < l && nums[l] == nums[l + 1]) {
+                        l--;
+                    }
+                }
+            }
+        }
+        return result;
     }
 }
