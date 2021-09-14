@@ -71,4 +71,38 @@ public class StringAndArrayAlgorithm {
         }
         return result;
     }
+
+    /**
+     * 给定一个 m x n 的矩阵，如果一个元素为 0 ，则将其所在行和列的所有元素都设为 0 。请使用 原地 算法。
+     * 输入：matrix = [[1,1,1],[1,0,1],[1,1,1]]
+     * 输出：[[1,0,1],[0,0,0],[1,0,1]]
+     *
+     * 作者：力扣 (LeetCode)
+     * 链接：https://leetcode-cn.com/leetbook/read/top-interview-questions-medium/xvmy42/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     * @param matrix
+     */
+    private static void setZeroes(int[][] matrix) {
+        int m = matrix.length;
+        int n = matrix[0].length;
+        boolean[] zeros = new boolean[m + n];
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (matrix[i][j] == 0) {
+                    zeros[i] = true;
+                    zeros[m + j] = true;
+                }
+            }
+        }
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (zeros[i] || zeros[m + j]) {
+                    matrix[i][j] = 0;
+                }
+            }
+        }
+    }
 }
