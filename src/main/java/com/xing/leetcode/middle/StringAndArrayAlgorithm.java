@@ -8,9 +8,12 @@ import java.util.*;
  */
 public class StringAndArrayAlgorithm {
     public static void main(String[] args) throws Exception {
-        int[] nums = {-1, -1, 0, -4, -4, 1, -2, 2, 0, -4};
+//        int[] nums = {-1, -1, 0, -4, -4, 1, -2, 2, 0, -4};
 //        int[] nums = {0, 0, 0};
-        System.out.println(threeSum(nums));
+//        System.out.println(threeSum(nums));
+        String[] strarr = {"eat", "tea", "tan", "ate", "nat", "bat"};
+
+        System.out.println(groupAnagrams(strarr));
     }
 
     /**
@@ -104,5 +107,48 @@ public class StringAndArrayAlgorithm {
                 }
             }
         }
+    }
+
+    /**
+     * 给你一个字符串数组，请你将 字母异位词 组合在一起。可以按任意顺序返回结果列表。
+     *
+     * 字母异位词 是由重新排列源单词的字母得到的一个新单词，所有源单词中的字母都恰好只用一次。
+     *
+     * 输入: strs = ["eat", "tea", "tan", "ate", "nat", "bat"]
+     * 输出: [["bat"],["nat","tan"],["ate","eat","tea"]]
+     *
+     * 作者：力扣 (LeetCode)
+     * 链接：https://leetcode-cn.com/leetbook/read/top-interview-questions-medium/xvaszc/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     *
+     * @param strArr
+     * @return
+     */
+    private static List<List<String>> groupAnagrams(String[] strArr) {
+        if (strArr == null || strArr.length == 0) {
+            return new ArrayList<>();
+        }
+        Map<String, List<String>> map = new HashMap<>();
+        for (String str : strArr) {
+            char[] chars = str.toCharArray();
+            //对char数组进行排序
+            Arrays.sort(chars);
+            //将排序后的字符串作为key存入map
+            String key = String.valueOf(chars);
+            //不存在就放一个空list
+            if (!map.containsKey(key)) {
+                map.put(key, new ArrayList<>());
+            }
+            //如果存在，把当前字符串放入list在放进map中
+            List<String> strings = map.get(key);
+            strings.add(str);
+            map.put(key, strings);
+        }
+        List<List<String>> result = new ArrayList<>();
+        for (String key : map.keySet()) {
+            result.add(map.get(key));
+        }
+        return result;
     }
 }
