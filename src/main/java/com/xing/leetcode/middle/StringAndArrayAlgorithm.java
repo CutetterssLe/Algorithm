@@ -237,6 +237,7 @@ public class StringAndArrayAlgorithm {
             }
         }
         int offset = pArr[pos];
+        //测试推送
         StringBuilder sb = new StringBuilder();
         for (int i = pos - offset + 1; i < pos + offset - 1; i++) {
             if (chars[i] != '#') {
