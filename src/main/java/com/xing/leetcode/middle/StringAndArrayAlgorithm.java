@@ -210,7 +210,9 @@ public class StringAndArrayAlgorithm {
         if (s.length() <= 1) {
             return s;
         }
+        //# a # b # c # 主要是在每个char中间插入#号，前后也有#
         char[] chars = new char[s.length() * 2 + 1];
+        //插入#符号
         for (int i = 0, idx = 0; i < chars.length; i++) {
             chars[i] = (i & 1) == 0 ? '#' : s.charAt(idx++);
         }
@@ -245,5 +247,39 @@ public class StringAndArrayAlgorithm {
             }
         }
         return sb.toString();
+    }
+
+    /**
+     * 给你一个整数数组nums ，判断这个数组中是否存在长度为 3 的递增子序列。
+     *
+     * 如果存在这样的三元组下标 (i, j, k)且满足 i < j < k ，使得nums[i] < nums[j] < nums[k] ，返回 true ；否则，返回 false 。
+     *
+     * 作者：力扣 (LeetCode)
+     * 链接：https://leetcode-cn.com/leetbook/read/top-interview-questions-medium/xvvuqg/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     * @param nums
+     * @return
+     */
+    public static boolean increasingTriplet(int[] nums) {
+        if (nums.length < 3) {
+            return false;
+        }
+        boolean result = false;
+        //记录最小值
+        int min = Integer.MAX_VALUE;
+        //记录次小值
+        int secMin = Integer.MAX_VALUE;
+
+        for (int i = 0; i < nums.length; i++) {
+            if (min >= nums[i]) {
+                min = nums[i];
+            } else if (secMin >= nums[i]) {
+                secMin = nums[i];
+            } else {
+                result = true;
+            }
+        }
+        return result;
     }
 }
