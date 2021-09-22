@@ -1,5 +1,7 @@
 package com.xing.leetcode.middle;
 
+import com.xing.leetcode.basic.node.ListNode;
+
 import java.util.*;
 
 
@@ -12,8 +14,9 @@ public class StringAndArrayAlgorithm {
 //        int[] nums = {0, 0, 0};
 //        System.out.println(threeSum(nums));
 //        String[] strarr = {"eat", "tea", "tan", "ate", "nat", "bat"};
-        String s = "abcabcbb";
-        System.out.println(longestPalindrome(s));
+//        String s = "abcabcbb";
+//        System.out.println(longestPalindrome(s));
+
 
 //        System.out.println(lengthOfLongestSubstring(s));
     }
